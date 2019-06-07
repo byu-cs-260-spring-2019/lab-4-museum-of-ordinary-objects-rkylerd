@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" type="image/png" href="https://dogemuchwow.com/wp-content/uploads/2016/05/cropped-the-doge-favicon-blue.png"/>
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
   <title>Museum of Ordinary Objects</title>
@@ -10,6 +11,68 @@
 <body>
   <div id="admin" class="content">
     <h1>Museum of Ordinary Objects: The Admin Page!</h1>
+    
+      <div class="heading">
+        <div class="circle">1</div>
+        <h2>Add an Item</h2>
+      </div>
+
+      <div class="add">
+        <div class="form">
+          <select v-model="selected">
+            <option disabled value="">Please select one to add</option>
+            <option v-for="photo in photos" :value="photo">{{photo.name}}</option>
+            
+          </select>
+          <p></p>
+          <input v-model="title" placeholder="Title">
+          <br>
+          <input v-model="description" placeholder="Description">
+          
+          
+          <button @click="addNewItem">Add Item</button>
+        </div>
+        <!-- <div class="upload" v-if="addItem">
+          <h2>{{addItem.title}}</h2>
+          <h5>{{addItem.description}}</h5>
+          <img :src="addItem.path" />
+        </div> -->
+      </div>
+
+      <div id="app" class="content">
+          <section class="image-gallery">
+            <div class="image" v-for="item in items">
+              <h2>{{item.title}}</h2>
+              <img :src="item.path"/>
+              <p>{{item.description}}</p>
+            </div>
+        </div>
+
+
+      <div class="heading">
+          <div class="circle">2</div>
+          <h2>Edit/Delete an Item</h2>
+      </div>
+      <div class="edit" id="circle-two">
+        <div class="form">
+          <input v-model="findTitle" placeholder="Search">
+          <div class="suggestions" v-if="suggestions.length > 0">
+            <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.title}}</div>
+            
+          </div>
+        </div>
+        <div class="upload" v-if="findItem">
+          <input v-model="editTitle" placeholder="Title">
+          <input v-model="editDescription" placeholder="Description">
+          <p></p>
+          <img :src="findItem.path" />
+        </div>
+        <div class="actions" v-if="findItem">
+          <button @click="editItem(findItem)">Save Changes</button>
+          <button @click="deleteItem(findItem)">Delete</button>
+        </div>
+      </div>
+      <section id="footer"></section>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>

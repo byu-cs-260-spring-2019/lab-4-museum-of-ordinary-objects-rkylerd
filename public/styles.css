@@ -60,6 +60,8 @@ body {
 
 .add, .edit {
   display: flex;
+  /* background: #333; */
+  width: 100%;
 }
 
 .circle {
@@ -150,4 +152,18 @@ html {
   .image-gallery {
     column-count: 2;
   }
+}
+
+#footer {
+  margin-top: 15rem;
+  display: block;
+  height: 6rem;
+  
+  border-radius: .3rem;
+  
+}
+
+#circle-two {
+  height: 4rem;
+  padding-bottom: 2rem;
 }
